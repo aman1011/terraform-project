@@ -12,27 +12,16 @@ provider "aws" {
   region  = "us-east-2"
 }
 
-data "aws_ami" "ubuntu" {
-  most_recent = true
-
-  filter {
-    name   = "name"
-    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
-  }
-
-  filter {
-    name   = "virtualization-type"
-    values = ["hvm"]
-  }
-
-  owners = ["099720109477"] # Canonical
-}
-
 resource "aws_instance" "example" {
-  ami           = data.aws_ami.ubuntu.id
+  ami = "ami-00f8e2c955f7ffa9b" # i guess its a centos machine. taken from centos.org
   instance_type = "t2.micro"
+  key_name = "terraform"
 
   tags = {
     Name = var.instance_name
   }
 }
+
+# Actually provisioning of the resources required for
+# the project.
+

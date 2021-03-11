@@ -10,4 +10,5 @@
   instance_tags = tomap({
     "Name" = "ExampleInstance-Starting Terraform"
   })```
+- The key pari used is terraform.pem in the account.
  - Next questions will be the application of -var and does it affect all the provisioned resources.
